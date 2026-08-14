@@ -1,0 +1,151 @@
+/* Nocturne — portfolio theme over Material for MkDocs */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #161826;
+  --color-text: #e9e9ed;
+  --color-accent: #9184d9;
+  --color-divider: color-mix(in srgb, #e9e9ed 16%, transparent);
+  --color-neutral-200: #e4e7f5;
+  --color-neutral-300: #cfd3e5;
+  --color-neutral-400: #b2b6ca;
+  --color-neutral-500: #9397ab;
+  --color-neutral-600: #75798c;
+  --color-neutral-900: #292b31;
+  --color-accent-300: #d2cefd;
+  --color-accent-400: #b5abfc;
+  --color-accent-900: #2b2741;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --page-x: 56px;
+  --content-w: 740px;
+}
+
+/* Material token overrides */
+[data-md-color-scheme="slate"] {
+  --md-hue: 240;
+  --md-default-bg-color: var(--color-bg);
+  --md-default-fg-color: var(--color-text);
+  --md-default-fg-color--light: var(--color-neutral-300);
+  --md-default-fg-color--lighter: var(--color-neutral-500);
+  --md-typeset-color: var(--color-text);
+  --md-typeset-a-color: var(--color-accent);
+  --md-primary-fg-color: var(--color-bg);
+  --md-accent-fg-color: var(--color-accent-400);
+  --md-code-bg-color: var(--color-neutral-900);
+  --md-code-fg-color: var(--color-neutral-200);
+}
+
+/* Strip the docs chrome — this is a single continuous page */
+.md-header, .md-sidebar, .md-footer, .md-content__button, .md-nav { display: none !important; }
+.md-main__inner { margin: 0; }
+.md-grid { max-width: none; }
+.md-content { max-width: none; }
+.md-content__inner { margin: 0; padding: 0; }
+.md-content__inner::before { display: none; }
+
+body { background: var(--color-bg); color: var(--color-text); font-family: Inter, system-ui, sans-serif; }
+.md-typeset { font-size: 15px; line-height: 1.65; }
+.md-typeset a { text-decoration: none; }
+.md-typeset a:hover { color: var(--color-accent-400); }
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  font-family: Inter, system-ui, sans-serif; font-weight: 500; color: var(--color-text);
+  letter-spacing: -0.02em; margin: 0;
+}
+.md-typeset p { margin: 0; }
+.md-typeset code { border-radius: var(--radius-sm); }
+
+/* Sticky nav */
+.he-nav {
+  position: sticky; top: 0; z-index: 3;
+  display: flex; gap: 26px; align-items: center;
+  padding: 16px var(--page-x);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 13px;
+}
+.he-nav a { color: var(--color-neutral-300); text-decoration: none; }
+.he-nav a:hover { color: var(--color-accent-300); }
+
+/* Sections — rules are full-bleed, content is capped */
+.sec { padding: 48px var(--page-x); border-top: 1px solid var(--color-divider); scroll-margin-top: 70px; }
+.sec > .inner, .sec-inner { max-width: var(--content-w); display: flex; flex-direction: column; gap: 12px; }
+.sec--first { padding-top: 56px; }
+.sec--wide > .inner { max-width: 820px; }
+
+/* Hero */
+.hero { padding: 84px var(--page-x) 60px; display: flex; flex-direction: column; gap: 18px; }
+.hero .mark { width: 56px; height: 2px; background: var(--color-accent); }
+.hero h1 { font-size: 64px; letter-spacing: -0.03em; }
+.hero .tagline {
+  font-size: 26px; line-height: 1.3; letter-spacing: -0.015em;
+  color: var(--color-neutral-200); max-width: 840px; text-wrap: pretty;
+}
+.hero .intro { font-size: 16px; color: var(--color-neutral-300); max-width: 700px; text-wrap: pretty; }
+.hero .actions { display: flex; gap: 10px; margin-top: 8px; }
+
+/* Buttons — outlined, never filled */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--radius-md);
+  font-weight: 500; font-size: 13.5px; text-decoration: none;
+  border: 1px solid transparent; cursor: pointer;
+}
+.btn-primary { border-color: var(--color-accent); color: var(--color-accent-300); }
+.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 14%, transparent); }
+.btn-ghost { color: var(--color-neutral-300); }
+.btn-ghost:hover { color: var(--color-accent-300); background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+
+/* Kickers, tags */
+.kicker {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-accent-400);
+}
+.kicker--muted { color: var(--color-neutral-500); }
+.sec h2 { font-size: 32px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.tag {
+  display: inline-flex; align-items: center; padding: 3px 9px;
+  border-radius: 999px; font-size: 11.5px; font-weight: 500;
+  background: var(--color-neutral-900); color: var(--color-neutral-300);
+}
+.tag-accent { background: var(--color-accent-900); color: var(--color-accent-300); }
+.src { font-size: 13px; margin-top: 4px; }
+
+/* Skills */
+.matrix { display: grid; grid-template-columns: 150px 1fr; gap: 18px 28px; align-items: baseline; max-width: 820px; }
+.matrix .row-label { color: var(--color-neutral-500); font-size: 14px; }
+
+/* Resume */
+.resume-group { display: flex; flex-direction: column; gap: 20px; }
+.resume-head {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-neutral-500);
+}
+.job { display: flex; flex-direction: column; gap: 8px; }
+.job-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.job-title h4 { font-size: 18px; }
+.job-title .when { font-size: 12.5px; color: var(--color-neutral-500); white-space: nowrap; }
+.md-typeset .job ul { margin: 0; padding-left: 18px; color: var(--color-neutral-300); font-size: 14px; }
+.md-typeset .job li { margin: 0 0 6px; }
+
+/* Contact + footer */
+.contact-links { display: flex; flex-direction: column; gap: 10px; font-size: 15px; margin-top: 4px; }
+.contact-links .plain { color: var(--color-neutral-400); }
+.he-footer {
+  padding: 20px var(--page-x); border-top: 1px solid var(--color-divider);
+  display: flex; justify-content: space-between; font-size: 12px; color: var(--color-neutral-500);
+}
+
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+@media screen and (max-width: 720px) {
+  :root { --page-x: 22px; }
+  .hero { padding-top: 48px; }
+  .hero h1 { font-size: 40px; }
+  .hero .tagline { font-size: 20px; }
+  .sec h2 { font-size: 26px; }
+  .matrix { grid-template-columns: 1fr; gap: 6px 0; }
+  .job-title { flex-direction: column; gap: 2px; }
+}
