@@ -1,0 +1,19 @@
+site_name: "Daniel Vincent"
+site_url: https://davincent.github.io/
+theme:
+  name: material
+  palette:
+    scheme: slate
+  font:
+    text: Inter
+    code: Roboto Mono
+  features:
+    - navigation.instant
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - attr_list
+  - md_in_html
+plugins: []
+nav:
+  - Home: index.md
